@@ -70,12 +70,7 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link
-                href="/doar"
-                className="flex items-center justify-center gap-2 bg-[#d4af37] text-[#113255] px-8 py-4 rounded-full font-bold hover:bg-yellow-400 transition-all shadow-lg text-lg"
-              >
-                Faça uma Doação <Heart className="w-5 h-5 fill-[#113255]" />
-              </Link>
+
               <Link
                 href="/trabalhos"
                 className="flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-[#113255] transition-all text-lg"
