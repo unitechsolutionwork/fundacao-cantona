@@ -23,7 +23,7 @@ const AnimatedFormBackground = () => (
 
 export default function Doacoes() {
     // Estados de controle global
-    const [method, setMethod] = useState(null);
+    const [method, setMethod] = useState<"mpesa" | "banco" | null>(null);
 
     // Estados para o formulário M-Pesa
     const [mpesaAmount, setMpesaAmount] = useState("");
@@ -32,11 +32,11 @@ export default function Doacoes() {
     const [mpesaError, setMpesaError] = useState("");
 
     // Estados para o formulário Banco
-    const [bankFile, setBankFile] = useState(null);
+    const [bankFile, setBankFile] = useState<File | null>(null);
     const [bankStatus, setBankStatus] = useState("idle");
 
     // CHAMADA REAL À API E2PAYMENTS
-    const handleMpesaSubmit = async (e) => {
+    const handleMpesaSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setMpesaStatus("loading");
         setMpesaError("");
@@ -59,14 +59,14 @@ export default function Doacoes() {
 
             setMpesaStatus("pin_prompt");
 
-        } catch (err) {
+        } catch (err: any) {
             setMpesaStatus("idle");
             setMpesaError(err.message || "Ocorreu um erro ao processar o pagamento.");
         }
     };
 
     // Simulação do Envio do Comprovativo Bancário
-    const handleBankSubmit = (e) => {
+    const handleBankSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setBankStatus("loading");
         setTimeout(() => {
@@ -134,8 +134,8 @@ export default function Doacoes() {
                             whileTap={{ scale: 0.98 }}
                             onClick={() => { setMethod("mpesa"); setMpesaStatus("idle"); setMpesaError(""); }}
                             className={`p-8 md:p-10 rounded-[2.5rem] border-2 transition-all flex flex-col items-center text-center gap-4 bg-white/90 backdrop-blur-xl shadow-2xl ${method === "mpesa"
-                                    ? "border-green-500 ring-4 ring-green-500/20"
-                                    : "border-transparent hover:border-green-200"
+                                ? "border-green-500 ring-4 ring-green-500/20"
+                                : "border-transparent hover:border-green-200"
                                 }`}
                         >
                             <div className={`w-20 h-20 rounded-full flex items-center justify-center transition-colors duration-300 shadow-inner ${method === "mpesa" ? "bg-green-500 text-white" : "bg-green-50 text-green-600"
@@ -155,8 +155,8 @@ export default function Doacoes() {
                             whileTap={{ scale: 0.98 }}
                             onClick={() => { setMethod("banco"); setBankStatus("idle"); }}
                             className={`p-8 md:p-10 rounded-[2.5rem] border-2 transition-all flex flex-col items-center text-center gap-4 bg-white/90 backdrop-blur-xl shadow-2xl ${method === "banco"
-                                    ? "border-[#113255] ring-4 ring-[#113255]/20"
-                                    : "border-transparent hover:border-blue-200"
+                                ? "border-[#113255] ring-4 ring-[#113255]/20"
+                                : "border-transparent hover:border-blue-200"
                                 }`}
                         >
                             <div className={`w-20 h-20 rounded-full flex items-center justify-center transition-colors duration-300 shadow-inner ${method === "banco" ? "bg-[#113255] text-white" : "bg-blue-50 text-[#113255]"

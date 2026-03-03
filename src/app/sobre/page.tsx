@@ -49,7 +49,11 @@ export default function Sobre() {
     visible: (index: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: index * 0.15, duration: 0.6, ease: "easeOut" },
+      transition: {
+        delay: index * 0.15,
+        duration: 0.6,
+        ease: "easeOut" as const, // <- CORRIGIDO
+      },
     }),
   };
 

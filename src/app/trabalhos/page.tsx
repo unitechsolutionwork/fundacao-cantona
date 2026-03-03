@@ -63,7 +63,7 @@ const FloatingImages = () => (
 );
 
 // ─── MEDIA CAROUSEL ────────────────────────────────────────────────────────
-const MediaCarousel = ({ media }) => {
+const MediaCarousel = ({ media }: { media: string[] }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
