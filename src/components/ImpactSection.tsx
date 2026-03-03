@@ -21,7 +21,7 @@ const impactData = [
         title: "Programa de Bolsas",
         desc: "Apoio educacional para 500 crianças em comunidades rurais",
         date: "Janeiro 2026",
-        image: "https://i.imgur.com/u2wjQGD.jpeg",
+        image: "https://i.imgur.com/BQ4K045.jpeg",
         size: "col-span-1",
     },
     {
@@ -30,7 +30,7 @@ const impactData = [
         title: "Vacinação Comunitária",
         desc: "Cuidados de saúde para mais de 1.200 pessoas",
         date: "Dezembro 2025",
-        image: "https://i.imgur.com/iKNHyzJ.jpeg",
+        image: "https://i.imgur.com/kmk0eh0.jpeg",
         size: "col-span-1",
     },
 ];
