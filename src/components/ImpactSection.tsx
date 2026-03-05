@@ -3,37 +3,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, Volume2, VolumeX } from "lucide-react";
-
-// Os nossos dados de impacto
-const impactData = [
-    {
-        id: 1,
-        tag: "Ação Emergencial",
-        title: "Apoio às Vítimas das Cheias em Gaza",
-        desc: "Doação de mais de 3 mil kits de emergência à população dos Distritos de Chókwè e Xai-Xai",
-        date: "Fevereiro 2026",
-        video: "/doacao.mp4",
-        size: "md:col-span-2 md:row-span-2",
-    },
-    {
-        id: 2,
-        tag: "Educação",
-        title: "Programa de Bolsas",
-        desc: "Apoio educacional para 500 crianças em comunidades rurais",
-        date: "Janeiro 2026",
-        image: "https://i.imgur.com/BQ4K045.jpeg",
-        size: "col-span-1",
-    },
-    {
-        id: 3,
-        tag: "Saúde",
-        title: "Vacinação Comunitária",
-        desc: "Cuidados de saúde para mais de 1.200 pessoas",
-        date: "Dezembro 2025",
-        image: "https://i.imgur.com/kmk0eh0.jpeg",
-        size: "col-span-1",
-    },
-];
+import { useTranslations } from 'next-intl';
 
 // Mini-componente inteligente para controlar o vídeo e o som
 const VideoPlayer = ({ src }: { src: string }) => {
@@ -54,13 +24,11 @@ const VideoPlayer = ({ src }: { src: string }) => {
                 ref={videoRef}
                 autoPlay
                 loop
-                muted={true} // Começa sempre sem som para o navegador não bloquear
+                muted={true}
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 src={src}
             />
-
-            {/* Botão de Ligar/Desligar Som */}
             <button
                 onClick={toggleMute}
                 className="absolute top-6 right-6 z-20 bg-black/40 hover:bg-[#3a7d44] text-white p-2.5 rounded-full backdrop-blur-sm transition-all shadow-lg border border-white/20"
@@ -73,11 +41,43 @@ const VideoPlayer = ({ src }: { src: string }) => {
 };
 
 export default function ImpactSection() {
+    const t = useTranslations('Impact');
+
+    // Movemos os dados para DENTRO da função para o tradutor conseguir ler
+    const impactData = [
+        {
+            id: 1,
+            tag: t('item1_tag'),
+            title: t('item1_title'),
+            desc: t('item1_desc'),
+            date: t('item1_date'),
+            video: "/doacao.mp4",
+            size: "md:col-span-2 md:row-span-2",
+        },
+        {
+            id: 2,
+            tag: t('item2_tag'),
+            title: t('item2_title'),
+            desc: t('item2_desc'),
+            date: t('item2_date'),
+            image: "https://i.imgur.com/BQ4K045.jpeg",
+            size: "col-span-1",
+        },
+        {
+            id: 3,
+            tag: t('item3_tag'),
+            title: t('item3_title'),
+            desc: t('item3_desc'),
+            date: t('item3_date'),
+            image: "https://i.imgur.com/kmk0eh0.jpeg",
+            size: "col-span-1",
+        },
+    ];
+
     return (
         <section className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                {/* Cabeçalho da Secção */}
                 <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ export default function ImpactSection() {
                         viewport={{ once: true }}
                         className="inline-flex items-center gap-2 bg-[#f8fafc] text-[#113255] px-4 py-2 rounded-full text-sm font-semibold border border-gray-100 shadow-sm"
                     >
-                        <span className="text-[#3a7d44]">⚡</span> Nosso Impacto
+                        <span className="text-[#3a7d44]">⚡</span> {t('badge')}
                     </motion.div>
 
                     <motion.h2
@@ -95,7 +95,7 @@ export default function ImpactSection() {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-extrabold text-[#113255]"
                     >
-                        Transformação em Ação
+                        {t('title')}
                     </motion.h2>
 
                     <motion.p
@@ -105,11 +105,10 @@ export default function ImpactSection() {
                         transition={{ delay: 0.2 }}
                         className="text-lg text-gray-600"
                     >
-                        Acompanhe as iniciativas que estão a mudar vidas em Moçambique
+                        {t('subtitle')}
                     </motion.p>
                 </div>
 
-                {/* Grelha de Cartões */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[320px]">
                     {impactData.map((item, index) => (
                         <motion.div
@@ -120,8 +119,6 @@ export default function ImpactSection() {
                             transition={{ delay: index * 0.1 }}
                             className={`group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 ${item.size}`}
                         >
-
-                            {/* Se for vídeo chama o nosso Player, se for imagem mostra normal */}
                             {item.video ? (
                                 <VideoPlayer src={item.video} />
                             ) : (
@@ -131,10 +128,8 @@ export default function ImpactSection() {
                                 />
                             )}
 
-                            {/* Overlay Escuro */}
                             <div className="absolute inset-0 bg-gradient-to-t from-[#113255]/95 via-[#113255]/50 to-transparent" />
 
-                            {/* Conteúdo do Cartão */}
                             <div className="absolute inset-0 p-8 flex flex-col justify-end z-10 pointer-events-none">
                                 <div className="self-start bg-white/95 text-[#113255] px-3 py-1.5 rounded-lg text-xs font-bold mb-auto mt-2 shadow-sm pointer-events-auto">
                                     {item.tag}
@@ -154,7 +149,7 @@ export default function ImpactSection() {
                                         {item.date}
                                     </div>
                                     <div className="flex items-center gap-1 text-white text-sm font-semibold group-hover:text-[#d4af37] transition-colors cursor-pointer">
-                                        Ler Mais <ArrowRight className="w-4 h-4" />
+                                        {t('read_more')} <ArrowRight className="w-4 h-4" />
                                     </div>
                                 </div>
                             </div>
