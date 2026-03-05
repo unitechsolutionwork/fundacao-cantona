@@ -5,6 +5,7 @@
         "impacto": "Impact",
         "doacoes": "Donations",
         "contacto": "Contact Us",
+        "noticias": "News",
         "doar_btn": "Donate Now"
     },
     "Home": {
@@ -152,7 +153,6 @@
         "g1_p11_desc": "At the Mesquita Resettlement Center, we supported over 2,000 people. We delivered 200 zinc sheets and 35 tons of essential goods.",
         "g1_p11_loc": "Inhambane (Mesquita)",
         "g2_year": "The Fight Against Floods: The Strength of Our Solidarity",
-        "g2_intro": "When the waters rose, our compassion spoke louder. We crossed the provinces of Gaza and Maputo to ensure no one was left behind.",
         "g2_p10_title": "Strength in Xai-Xai (Tavene)",
         "g2_p10_desc": "We arrived in Tavene with 30 tons of food and various products. Every delivered package was a silent message: \"You are not alone.\"",
         "g2_p10_loc": "Gaza",
@@ -261,5 +261,24 @@
         "success_title": "Message Sent!",
         "success_desc": "We have received your message and will contact you shortly.",
         "success_btn": "Send another message"
+    },
+    "Noticias": {
+        "hero_badge": "Press Room",
+        "hero_title_1": "The Foundation in the",
+        "hero_title_2": "Media",
+        "hero_subtitle": "Follow our work's impact across Mozambique's leading news channels and newspapers.",
+        "cat_tv": "Television",
+        "cat_press": "Press",
+        "news1_title": "Support for victims of Cyclone Gezani in Inhambane",
+        "news1_desc": "The Cantoná Foundation donated 35 tons of food and various products, benefiting around 20,000 people, in addition to delivering 2,000 zinc sheets.",
+        "news2_title": "Additional 30 tons of aid directed to Gaza",
+        "news2_desc": "Donation of 30 tons of food products (rice, pasta, sardines, oil), hygiene kits, clothing, and mattresses, helping around 4,000 people in need.",
+        "news3_title": "Donation of 3,000 food kits in Chókwè",
+        "news3_desc": "Support for flood victims in the resettlement centers of Djunissa School (1,300 people) and Xiwakelane, providing basic food baskets, clothes, and flip-flops.",
+        "btn_watch": "Watch Report",
+        "btn_read": "Read Article",
+        "cta_title": "Are you a journalist or media professional?",
+        "cta_desc": "For interview requests or press materials, please contact our communication office.",
+        "cta_btn": "Contact Press Office"
     }
 }

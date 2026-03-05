@@ -5,6 +5,7 @@
         "impacto": "Impacto",
         "doacoes": "Doações",
         "contacto": "Contacto",
+        "noticias": "Notícias",
         "doar_btn": "Doar Agora"
     },
     "Home": {
@@ -152,7 +153,6 @@
         "g1_p11_desc": "No Centro de Reassentamento da Mesquita, amparámos mais de 2.000 pessoas. Entregámos 200 chapas de zinco e 35 toneladas de bens de primeira necessidade.",
         "g1_p11_loc": "Inhambane (Mesquita)",
         "g2_year": "A Luta Contra as Cheias: A Força da Nossa Solidariedade",
-        "g2_intro": "Quando as águas subiram, a nossa compaixão falou mais alto. Atravessámos as províncias de Gaza e Maputo para garantir que ninguém ficava para trás.",
         "g2_p10_title": "A Força em Xai-Xai (Tavene)",
         "g2_p10_desc": "Chegámos a Tavene com 30 toneladas de produtos alimentares e diversos. Cada pacote entregue foi uma mensagem silenciosa: \"Vocês não estão sozinhos.\"",
         "g2_p10_loc": "Gaza",
@@ -261,5 +261,24 @@
         "success_title": "Mensagem Enviada!",
         "success_desc": "Recebemos a sua mensagem e entraremos em contacto brevemente.",
         "success_btn": "Enviar outra mensagem"
+    },
+    "Noticias": {
+        "hero_badge": "Sala de Imprensa",
+        "hero_title_1": "A Fundação na",
+        "hero_title_2": "Mídia",
+        "hero_subtitle": "Acompanhe a repercussão do nosso trabalho nos principais canais de notícias e jornais de Moçambique.",
+        "cat_tv": "Televisão",
+        "cat_press": "Imprensa",
+        "news1_title": "Apoio às vítimas do Ciclone Gezani em Inhambane",
+        "news1_desc": "A Fundação Cantoná doou 35 toneladas de produtos alimentares e diversos, beneficiando cerca de 20.000 pessoas, além de entregar 2.000 chapas de zinco.",
+        "news2_title": "Ajuda adicional de 30 toneladas dirigida a Gaza",
+        "news2_desc": "Doação de 30 toneladas de produtos alimentares (arroz, massa, sardinha, óleo), kits de higiene, vestuário e colchões, ajudando cerca de 4.000 pessoas em dificuldade.",
+        "news3_title": "Doação de 3.000 kits de produtos alimentares em Chókwè",
+        "news3_desc": "Apoio às vítimas das cheias nos centros de reassentamento da Escola Djunissa (1.300 pessoas) e Xiwakelane, com entrega de cestas básicas, roupas e chinelos.",
+        "btn_watch": "Ver Reportagem",
+        "btn_read": "Ler Artigo",
+        "cta_title": "É jornalista ou da mídia?",
+        "cta_desc": "Para pedidos de entrevista ou material de imprensa, entre em contacto com o nosso gabinete de comunicação.",
+        "cta_btn": "Contactar Gabinete de Imprensa"
     }
 }
