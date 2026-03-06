@@ -82,23 +82,19 @@ const FrameSequence = ({ scrollProgress, folderName }: { scrollProgress: any, fo
   );
 };
 
-
 export default function Home() {
   const t = useTranslations('Home');
   const [currentImage, setCurrentImage] = useState(0);
 
-  // 1. SCROLL DA HERO SECTION PARA FUSÃO SUAVE
+  // 1. SCROLL DA HERO SECTION PARA FUSÃO SUAVE (Transição cinematográfica)
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: heroScroll } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"]
   });
 
-  // Opacidade vai de 100% para 0% conforme rola para baixo
   const heroOpacity = useTransform(heroScroll, [0, 0.8], [1, 0]);
-  // Efeito parallax sutil (encolhe um pouco)
   const heroScale = useTransform(heroScroll, [0, 1], [1, 0.95]);
-
 
   // 2. SCROLL DA SECÇÃO "COMO FUNCIONA"
   const howSectionRef = useRef<HTMLDivElement>(null);
@@ -128,21 +124,21 @@ export default function Home() {
     {
       title: "Identificação",
       desc: "Mapeamos as necessidades críticas de cada família e comunidade vulnerável.",
-      icon: <Users className="w-8 h-8" />,
+      icon: <Users className="w-6 h-6 lg:w-8 lg:h-8" />,
       folder: "identificacao",
       progress: step0Progress
     },
     {
       title: "Logística Real",
       desc: "Garantimos o transporte seguro de todos os mantimentos até às zonas mais remotas.",
-      icon: <Truck className="w-8 h-8" />,
+      icon: <Truck className="w-6 h-6 lg:w-8 lg:h-8" />,
       folder: "logistica",
       progress: step1Progress
     },
     {
       title: "Entrega Pessoal",
       desc: "A nossa equipa entrega pessoalmente, garantindo transparência e dignidade.",
-      icon: <CheckCircle className="w-8 h-8" />,
+      icon: <CheckCircle className="w-6 h-6 lg:w-8 lg:h-8" />,
       folder: "entrega",
       progress: step2Progress
     }
@@ -162,13 +158,12 @@ export default function Home() {
               className="absolute inset-0 w-full h-full object-cover" alt="Fundação Cantoná" />
           </AnimatePresence>
 
-          {/* Overlay Padrão */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#113255]/90 via-[#113255]/50 to-transparent z-10" />
 
-          {/* ZONA DE FUSÃO INVISÍVEL (Bottom) - Cria a transição perfeita */}
+          {/* ZONA DE FUSÃO INVISÍVEL (Bottom) */}
           <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
 
-          {/* Conteúdo animado com Scroll */}
+          {/* Conteúdo animado (desaparece ao rolar para baixo) */}
           <motion.div
             style={{ opacity: heroOpacity, scale: heroScale }}
             className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-16"
@@ -196,12 +191,11 @@ export default function Home() {
         {/* ── COMO FUNCIONA (CINEMATIC SCROLLYTELLING) ── */}
         <section ref={howSectionRef} className="relative h-[300vh] w-full bg-black">
           {/* Contentor Fixo na Tela */}
-          <div className="sticky top-0 h-screen w-full overflow-hidden">
+          <div className="sticky top-0 h-[100svh] w-full overflow-hidden">
 
-            {/* ZONA DE FUSÃO INVISÍVEL (Top) - Recebe a secção anterior perfeitamente */}
+            {/* ZONA DE FUSÃO INVISÍVEL (Top) */}
             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-30 pointer-events-none" />
 
-            {/* O Fundo que muda de acordo com o step ativo */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStep}
@@ -211,38 +205,43 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="absolute inset-0 w-full h-full"
               >
+                {/* O fundo de ecrã inteiro faz a magia toda */}
                 <FrameSequence folderName={stepsInfo[activeStep].folder} scrollProgress={stepsInfo[activeStep].progress} />
               </motion.div>
             </AnimatePresence>
 
-            {/* Gradiente escuro para garantir que os textos sejam legíveis */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#113255]/95 via-[#113255]/60 to-black/30 z-10" />
+            {/* Gradiente escuro focado na esquerda para garantir legibilidade dos textos sobre o vídeo */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#113255]/95 via-[#113255]/70 to-black/30 z-10" />
 
-            {/* Interface de Textos */}
-            <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
-              <div className="w-full lg:w-1/2 pt-20">
-                <h2 className="text-sm font-bold text-[#d4af37] tracking-widest uppercase mb-4">Metodologia</h2>
-                <h3 className="text-4xl md:text-5xl font-black text-white leading-tight mb-12">
-                  Como a sua ajuda<br />chega ao destino
-                </h3>
+            {/* Interface de Textos Centralizada/Esquerda */}
+            <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center pt-24 pb-8 lg:py-20">
 
-                <div className="space-y-12 pl-4 border-l-2 border-white/20">
+              <div className="w-full max-w-2xl flex flex-col justify-center shrink-0">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-6 lg:mb-12">
+                  <h2 className="text-xs lg:text-sm font-bold text-[#d4af37] tracking-widest uppercase mb-2 lg:mb-4">Metodologia</h2>
+                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">
+                    Como a sua ajuda<br className="hidden lg:block" /> chega ao destino
+                  </h3>
+                  <div className="w-16 h-1.5 bg-[#3a7d44] mt-4 lg:mt-6 rounded-full" />
+                </motion.div>
+
+                <div className="space-y-8 lg:space-y-12 pl-4 border-l-2 border-white/20">
                   {stepsInfo.map((step, i) => {
                     const isActive = activeStep === i;
                     return (
                       <div
                         key={i}
-                        className={`relative transition-all duration-700 ease-in-out ${isActive ? "opacity-100 scale-100 translate-x-4" : "opacity-30 scale-95 translate-x-0"}`}
+                        className={`relative transition-all duration-700 ease-in-out ${isActive ? "opacity-100 scale-100 translate-x-2 lg:translate-x-4" : "opacity-30 scale-95 translate-x-0"}`}
                       >
-                        <div className={`absolute -left-[23px] top-4 w-3 h-3 rounded-full transition-colors duration-500 ${isActive ? "bg-[#d4af37] shadow-[0_0_15px_#d4af37]" : "bg-white/20"}`} />
+                        <div className={`absolute -left-[23px] top-3 lg:top-4 w-3 h-3 rounded-full transition-colors duration-500 ${isActive ? "bg-[#d4af37] shadow-[0_0_15px_#d4af37]" : "bg-white/20"}`} />
 
-                        <div className="flex items-start gap-5">
-                          <div className={`w-12 h-12 shrink-0 rounded-xl flex items-center justify-center transition-colors duration-500 shadow-lg ${isActive ? "bg-[#3a7d44] text-white" : "bg-white/10 text-white/50"}`}>
+                        <div className="flex items-start gap-4 lg:gap-5">
+                          <div className={`w-10 h-10 lg:w-12 lg:h-12 shrink-0 rounded-xl flex items-center justify-center transition-colors duration-500 shadow-lg ${isActive ? "bg-[#3a7d44] text-white" : "bg-white/10 text-white/50"}`}>
                             {step.icon}
                           </div>
                           <div>
-                            <h4 className="text-2xl font-bold text-white mb-2">{step.title}</h4>
-                            <p className="text-gray-300 leading-relaxed text-lg max-w-sm">
+                            <h4 className="text-lg lg:text-2xl font-bold text-white mb-1 lg:mb-2">{step.title}</h4>
+                            <p className="text-gray-300 leading-relaxed text-sm lg:text-lg max-w-sm">
                               {step.desc}
                             </p>
                           </div>
@@ -252,8 +251,8 @@ export default function Home() {
                   })}
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
         </section>
 
