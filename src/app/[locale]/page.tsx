@@ -42,7 +42,6 @@ const FrameSequence = ({ scrollProgress, folderName }: { scrollProgress: any, fo
     for (let i = 1; i <= NUM_FRAMES; i++) {
       const img = new Image();
       const frameNum = i.toString().padStart(2, '0');
-      // Busca as imagens na pasta específica (identificacao, logistica ou entrega)
       img.src = `/${folderName}/${frameNum}.png`;
 
       img.onload = () => {
@@ -56,12 +55,11 @@ const FrameSequence = ({ scrollProgress, folderName }: { scrollProgress: any, fo
       loadedImages.push(img);
     }
     setImages(loadedImages);
-  }, [folderName]); // Recarrega se a pasta mudar
+  }, [folderName]);
 
   useMotionValueEvent(scrollProgress, "change", (latest: number) => {
     if (!canvasRef.current || images.length === 0) return;
 
-    // Limita o progresso para não passar do número de frames
     const frameIndex = Math.min(NUM_FRAMES - 1, Math.max(0, Math.floor(latest * NUM_FRAMES)));
     const img = images[frameIndex];
 
@@ -89,7 +87,20 @@ export default function Home() {
   const t = useTranslations('Home');
   const [currentImage, setCurrentImage] = useState(0);
 
-  // Referência e scroll da secção "Como Funciona" (Scrollytelling)
+  // 1. SCROLL DA HERO SECTION PARA FUSÃO SUAVE
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: heroScroll } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+
+  // Opacidade vai de 100% para 0% conforme rola para baixo
+  const heroOpacity = useTransform(heroScroll, [0, 0.8], [1, 0]);
+  // Efeito parallax sutil (encolhe um pouco)
+  const heroScale = useTransform(heroScroll, [0, 1], [1, 0.95]);
+
+
+  // 2. SCROLL DA SECÇÃO "COMO FUNCIONA"
   const howSectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: howScrollProgress } = useScroll({
     target: howSectionRef,
@@ -98,14 +109,12 @@ export default function Home() {
 
   const [activeStep, setActiveStep] = useState(0);
 
-  // Divide o scroll da secção (0 a 1) em 3 fases perfeitas
   useMotionValueEvent(howScrollProgress, "change", (latest) => {
     if (latest < 0.33) setActiveStep(0);
     else if (latest < 0.66) setActiveStep(1);
     else setActiveStep(2);
   });
 
-  // Cria 3 progressos isolados para cada passo animar o seu respetivo vídeo do frame 0 ao 50
   const step0Progress = useTransform(howScrollProgress, [0, 0.33], [0, 1]);
   const step1Progress = useTransform(howScrollProgress, [0.33, 0.66], [0, 1]);
   const step2Progress = useTransform(howScrollProgress, [0.66, 1], [0, 1]);
@@ -145,16 +154,25 @@ export default function Home() {
         <Navbar />
 
         {/* ── HERO INICIAL ── */}
-        <div className="relative min-h-screen w-full overflow-hidden flex items-center">
+        <div ref={heroRef} className="relative min-h-screen w-full overflow-hidden flex items-center bg-black">
           <AnimatePresence mode="popLayout">
             <motion.img key={currentImage} src={heroImages[currentImage]}
               initial={{ opacity: 0, scale: 1.08 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
               className="absolute inset-0 w-full h-full object-cover" alt="Fundação Cantoná" />
           </AnimatePresence>
+
+          {/* Overlay Padrão */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#113255]/90 via-[#113255]/50 to-transparent z-10" />
 
-          <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-16">
+          {/* ZONA DE FUSÃO INVISÍVEL (Bottom) - Cria a transição perfeita */}
+          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
+
+          {/* Conteúdo animado com Scroll */}
+          <motion.div
+            style={{ opacity: heroOpacity, scale: heroScale }}
+            className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-16"
+          >
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.5 }} className="max-w-2xl space-y-5">
               <div className="inline-block bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide border border-white/30 shadow-md">
                 {t('hero_badge')}
@@ -172,13 +190,16 @@ export default function Home() {
                 </Link>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
 
         {/* ── COMO FUNCIONA (CINEMATIC SCROLLYTELLING) ── */}
         <section ref={howSectionRef} className="relative h-[300vh] w-full bg-black">
           {/* Contentor Fixo na Tela */}
           <div className="sticky top-0 h-screen w-full overflow-hidden">
+
+            {/* ZONA DE FUSÃO INVISÍVEL (Top) - Recebe a secção anterior perfeitamente */}
+            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-30 pointer-events-none" />
 
             {/* O Fundo que muda de acordo com o step ativo */}
             <AnimatePresence mode="wait">
@@ -213,7 +234,6 @@ export default function Home() {
                         key={i}
                         className={`relative transition-all duration-700 ease-in-out ${isActive ? "opacity-100 scale-100 translate-x-4" : "opacity-30 scale-95 translate-x-0"}`}
                       >
-                        {/* Ponto indicador na linha vertical */}
                         <div className={`absolute -left-[23px] top-4 w-3 h-3 rounded-full transition-colors duration-500 ${isActive ? "bg-[#d4af37] shadow-[0_0_15px_#d4af37]" : "bg-white/20"}`} />
 
                         <div className="flex items-start gap-5">
