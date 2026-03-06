@@ -7,7 +7,7 @@ import { ReactLenis } from '@studio-freight/react-lenis';
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent, useTransform } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Truck, Users, CheckCircle, Quote, MapPin, Mail, Phone, Heart } from "lucide-react";
+import { ArrowRight, Truck, Users, CheckCircle, Quote, MapPin, Mail, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ImpactSection from "@/components/ImpactSection";
 import DonationSection from "@/components/DonationSection";
@@ -86,7 +86,7 @@ export default function Home() {
   const t = useTranslations('Home');
   const [currentImage, setCurrentImage] = useState(0);
 
-  // 1. SCROLL DA HERO SECTION PARA FUSÃO SUAVE (Transição cinematográfica)
+  // 1. SCROLL DA HERO SECTION PARA FUSÃO SUAVE
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: heroScroll } = useScroll({
     target: heroRef,
@@ -124,21 +124,21 @@ export default function Home() {
     {
       title: "Identificação",
       desc: "Mapeamos as necessidades críticas de cada família e comunidade vulnerável.",
-      icon: <Users className="w-6 h-6 lg:w-8 lg:h-8" />,
+      icon: <Users className="w-5 h-5 lg:w-8 lg:h-8" />,
       folder: "identificacao",
       progress: step0Progress
     },
     {
       title: "Logística Real",
       desc: "Garantimos o transporte seguro de todos os mantimentos até às zonas mais remotas.",
-      icon: <Truck className="w-6 h-6 lg:w-8 lg:h-8" />,
+      icon: <Truck className="w-5 h-5 lg:w-8 lg:h-8" />,
       folder: "logistica",
       progress: step1Progress
     },
     {
       title: "Entrega Pessoal",
       desc: "A nossa equipa entrega pessoalmente, garantindo transparência e dignidade.",
-      icon: <CheckCircle className="w-6 h-6 lg:w-8 lg:h-8" />,
+      icon: <CheckCircle className="w-5 h-5 lg:w-8 lg:h-8" />,
       folder: "entrega",
       progress: step2Progress
     }
@@ -161,7 +161,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#113255]/90 via-[#113255]/50 to-transparent z-10" />
 
           {/* ZONA DE FUSÃO INVISÍVEL (Bottom) */}
-          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#0a192f] via-[#0a192f]/80 to-transparent z-20 pointer-events-none" />
 
           {/* Conteúdo animado (desaparece ao rolar para baixo) */}
           <motion.div
@@ -188,44 +188,45 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* ── COMO FUNCIONA (CINEMATIC SCROLLYTELLING) ── */}
-        <section ref={howSectionRef} className="relative h-[300vh] w-full bg-black">
+        {/* ── COMO FUNCIONA (AMBIENT GLASSMORPHISM) ── */}
+        <section ref={howSectionRef} className="relative h-[300vh] w-full bg-[#0a192f]">
           {/* Contentor Fixo na Tela */}
-          <div className="sticky top-0 h-[100svh] w-full overflow-hidden">
+          <div className="sticky top-0 h-[100svh] w-full overflow-hidden flex flex-col justify-center">
 
-            {/* ZONA DE FUSÃO INVISÍVEL (Top) */}
-            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-30 pointer-events-none" />
-
+            {/* 1. FUNDO AMBIENTE: A mesma sequência, mas com blur e escurecida */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={activeStep}
+                key={`bg-${activeStep}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
-                className="absolute inset-0 w-full h-full"
+                className="absolute inset-0 w-full h-full z-0"
               >
-                {/* O fundo de ecrã inteiro faz a magia toda */}
                 <FrameSequence folderName={stepsInfo[activeStep].folder} scrollProgress={stepsInfo[activeStep].progress} />
               </motion.div>
             </AnimatePresence>
 
-            {/* Gradiente escuro focado na esquerda para garantir legibilidade dos textos sobre o vídeo */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#113255]/95 via-[#113255]/70 to-black/30 z-10" />
+            {/* Vidro Fosco sobre o Fundo */}
+            <div className="absolute inset-0 bg-[#0a192f]/85 backdrop-blur-xl z-10" />
 
-            {/* Interface de Textos Centralizada/Esquerda */}
-            <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center pt-24 pb-8 lg:py-20">
+            {/* ZONA DE FUSÃO INVISÍVEL (Top) */}
+            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0a192f] to-transparent z-30 pointer-events-none" />
 
-              <div className="w-full max-w-2xl flex flex-col justify-center shrink-0">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-6 lg:mb-12">
-                  <h2 className="text-xs lg:text-sm font-bold text-[#d4af37] tracking-widest uppercase mb-2 lg:mb-4">Metodologia</h2>
+            {/* Interface de Textos e O Quadrado */}
+            <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-6 lg:gap-16 pt-20 pb-10 lg:py-0">
+
+              {/* Lado Esquerdo: Textos */}
+              <div className="w-full lg:w-1/2 flex flex-col shrink-0">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-6 lg:mb-14">
+                  <h2 className="text-[10px] lg:text-sm font-bold text-[#d4af37] tracking-widest uppercase mb-1 lg:mb-4">Metodologia</h2>
                   <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">
                     Como a sua ajuda<br className="hidden lg:block" /> chega ao destino
                   </h3>
-                  <div className="w-16 h-1.5 bg-[#3a7d44] mt-4 lg:mt-6 rounded-full" />
+                  <div className="w-12 lg:w-16 h-1 lg:h-1.5 bg-[#3a7d44] mt-3 lg:mt-6 rounded-full" />
                 </motion.div>
 
-                <div className="space-y-8 lg:space-y-12 pl-4 border-l-2 border-white/20">
+                <div className="space-y-5 lg:space-y-12 pl-4 lg:pl-6 border-l-2 border-white/10">
                   {stepsInfo.map((step, i) => {
                     const isActive = activeStep === i;
                     return (
@@ -233,15 +234,18 @@ export default function Home() {
                         key={i}
                         className={`relative transition-all duration-700 ease-in-out ${isActive ? "opacity-100 scale-100 translate-x-2 lg:translate-x-4" : "opacity-30 scale-95 translate-x-0"}`}
                       >
-                        <div className={`absolute -left-[23px] top-3 lg:top-4 w-3 h-3 rounded-full transition-colors duration-500 ${isActive ? "bg-[#d4af37] shadow-[0_0_15px_#d4af37]" : "bg-white/20"}`} />
+                        {/* Ponto indicador na linha */}
+                        <div className={`absolute -left-[21px] lg:-left-[31px] top-3 lg:top-4 w-2.5 h-2.5 lg:w-3 lg:h-3 rounded-full transition-colors duration-500 ${isActive ? "bg-[#d4af37] shadow-[0_0_15px_#d4af37]" : "bg-white/20"}`} />
 
-                        <div className="flex items-start gap-4 lg:gap-5">
-                          <div className={`w-10 h-10 lg:w-12 lg:h-12 shrink-0 rounded-xl flex items-center justify-center transition-colors duration-500 shadow-lg ${isActive ? "bg-[#3a7d44] text-white" : "bg-white/10 text-white/50"}`}>
+                        <div className="flex items-start gap-4 lg:gap-6">
+                          <div className={`w-10 h-10 lg:w-14 lg:h-14 shrink-0 rounded-xl flex items-center justify-center transition-colors duration-500 shadow-lg ${isActive ? "bg-[#3a7d44] text-white" : "bg-white/5 text-white/40"}`}>
                             {step.icon}
                           </div>
-                          <div>
-                            <h4 className="text-lg lg:text-2xl font-bold text-white mb-1 lg:mb-2">{step.title}</h4>
-                            <p className="text-gray-300 leading-relaxed text-sm lg:text-lg max-w-sm">
+                          <div className="pt-1 lg:pt-2">
+                            <h4 className="text-lg lg:text-2xl font-bold text-white mb-1 lg:mb-3 leading-tight">{step.title}</h4>
+
+                            {/* Magia do Mobile: O texto só aparece se estiver ativo, poupando espaço! */}
+                            <p className={`text-gray-300 leading-relaxed text-sm lg:text-lg max-w-md transition-all duration-500 ${isActive ? "block" : "hidden lg:block"}`}>
                               {step.desc}
                             </p>
                           </div>
@@ -249,6 +253,24 @@ export default function Home() {
                       </div>
                     );
                   })}
+                </div>
+              </div>
+
+              {/* Lado Direito: O Quadrado (Cartão Nítido) OTIMIZADO PARA MOBILE */}
+              <div className="w-full lg:w-1/2 relative z-30 flex justify-center mt-2 lg:mt-0">
+                <div className="relative w-11/12 sm:w-4/5 lg:w-full aspect-video lg:aspect-[4/3] rounded-3xl lg:rounded-[3rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.5)] border-[3px] lg:border-[8px] border-white/90 bg-black">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`card-${activeStep}`}
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                      className="absolute inset-0 w-full h-full"
+                    >
+                      <FrameSequence folderName={stepsInfo[activeStep].folder} scrollProgress={stepsInfo[activeStep].progress} />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
 

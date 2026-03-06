@@ -187,19 +187,123 @@ export default function Impacto() {
         {
             year: t('g1_year'),
             phases: [
-                { phaseNum: 15, title: t('g1_p15_title'), desc: t('g1_p15_desc'), location: t('g1_p15_loc'), media: ["https://i.imgur.com/xriMc5A.jpeg", "https://via.placeholder.com/800x600/113255/FFFFFF?text=Vacinação+Foto+2"] },
-                { phaseNum: 14, title: t('g1_p14_title'), desc: t('g1_p14_desc'), location: t('g1_p14_loc'), media: ["https://i.imgur.com/JgU5KXO.jpeg", "https://via.placeholder.com/800x600/3a7d44/FFFFFF?text=Bolsas+Foto+2"] },
-                { phaseNum: 13, title: t('g1_p13_title'), desc: t('g1_p13_desc'), location: t('g1_p13_loc'), media: ["https://via.placeholder.com/800x600/113255/FFFFFF?text=Casas+Malembuane+1", "https://via.placeholder.com/800x600/3a7d44/FFFFFF?text=Casas+Malembuane+2"] },
-                { phaseNum: 12, title: t('g1_p12_title'), desc: t('g1_p12_desc'), location: t('g1_p12_loc'), media: ["https://via.placeholder.com/800x600/113255/FFFFFF?text=Mercado+Tofo+1", "https://via.placeholder.com/800x600/3a7d44/FFFFFF?text=Barra+Casas+2"] },
-                { phaseNum: 11, title: t('g1_p11_title'), desc: t('g1_p11_desc'), location: t('g1_p11_loc'), media: ["https://via.placeholder.com/800x600/113255/FFFFFF?text=Ciclone+Foto+1", "https://via.placeholder.com/800x600/3a7d44/FFFFFF?text=Ciclone+Foto+2"] },
+                {
+                    phaseNum: 15,
+                    title: t('g1_p15_title'),
+                    desc: t('g1_p15_desc'),
+                    location: t('g1_p15_loc'),
+                    media: [
+                        "https://i.imgur.com/6ri5bbH.jpeg",
+                        "https://i.imgur.com/0ptix17.jpeg"
+                    ]
+                },
+                {
+                    phaseNum: 14,
+                    title: t('g1_p14_title'),
+                    desc: t('g1_p14_desc'),
+                    location: t('g1_p14_loc'),
+                    media: [
+                        "https://i.imgur.com/TSB9c6K.jpeg",
+                        "https://i.imgur.com/FJhJwf2.jpeg"
+                    ]
+                },
+                {
+                    phaseNum: 13,
+                    title: t('g1_p13_title'),
+                    desc: t('g1_p13_desc'),
+                    location: t('g1_p13_loc'),
+                    media: [
+                        "https://i.imgur.com/uoi6VkL.jpeg",
+                        "https://i.imgur.com/ooldQn2.jpeg",
+                        "https://i.imgur.com/dBZ8kgl.jpeg",
+                        "https://i.imgur.com/KIX4zDW.jpeg",
+                        "https://i.imgur.com/zlSSouq.jpeg",
+                        "https://i.imgur.com/3FwTpZg.jpeg",
+                        "https://i.imgur.com/z6DcPYx.jpeg",
+                        "https://i.imgur.com/Dw1Qivm.jpeg",
+                        "https://i.imgur.com/jOISJIB.jpeg",
+                        "https://i.imgur.com/msKSlVV.jpeg"
+                    ]
+                },
+                {
+                    phaseNum: 12,
+                    title: t('g1_p12_title'),
+                    desc: t('g1_p12_desc'),
+                    location: t('g1_p12_loc'),
+                    media: [
+                        "https://i.imgur.com/uoi6VkL.jpeg",
+                        "https://i.imgur.com/ooldQn2.jpeg",
+                        "https://i.imgur.com/dBZ8kgl.jpeg",
+                        "https://i.imgur.com/KIX4zDW.jpeg",
+                        "https://i.imgur.com/zlSSouq.jpeg",
+                        "https://i.imgur.com/3FwTpZg.jpeg",
+                        "https://i.imgur.com/z6DcPYx.jpeg",
+                        "https://i.imgur.com/Dw1Qivm.jpeg",
+                        "https://i.imgur.com/jOISJIB.jpeg",
+                        "https://i.imgur.com/msKSlVV.jpeg"
+                    ]
+                },
+                {
+                    phaseNum: 11,
+                    title: t('g1_p11_title'),
+                    desc: t('g1_p11_desc'),
+                    location: t('g1_p11_loc'),
+                    media: [
+                        "https://i.imgur.com/0ptix17.jpeg",
+                        "https://i.imgur.com/Iz2ISr8.jpeg",
+                        "https://i.imgur.com/LQEsyaG.jpeg"
+                    ]
+                },
             ],
         },
         {
             year: t('g2_year'),
             phases: [
-                { phaseNum: 10, title: t('g2_p10_title'), desc: t('g2_p10_desc'), location: t('g2_p10_loc'), media: ["https://i.imgur.com/8sbJgNy.jpeg", "https://via.placeholder.com/800x600/113255/FFFFFF?text=Xai-Xai+Foto+2"] },
-                { phaseNum: 9, title: t('g2_p9_title'), desc: t('g2_p9_desc'), location: t('g2_p9_loc'), media: ["https://i.imgur.com/u2wjQGD.jpeg", "https://via.placeholder.com/800x600/3a7d44/FFFFFF?text=Chokwe+Gado"] },
-                { phaseNum: 8, title: t('g2_p8_title'), desc: t('g2_p8_desc'), location: t('g2_p8_loc'), media: ["https://i.imgur.com/iKNHyzJ.jpeg", "https://via.placeholder.com/800x600/113255/FFFFFF?text=Macia+Kits"] },
+                {
+                    phaseNum: 10,
+                    title: t('g2_p10_title'),
+                    desc: t('g2_p10_desc'),
+                    location: t('g2_p10_loc'),
+                    media: [
+                        "https://i.imgur.com/cNtZngw.jpeg",
+                        "https://i.imgur.com/9CUOdJ4.jpeg",
+                        "https://i.imgur.com/LmmwYDo.jpeg",
+                        "https://i.imgur.com/o9pAzkk.jpeg",
+                        "https://i.imgur.com/6ri5bbH.jpeg",
+                        "https://i.imgur.com/2eyZOX0.jpeg",
+                        "https://i.imgur.com/cffklhc.jpeg",
+                        "https://i.imgur.com/Lp5igmw.jpeg"
+                    ]
+                },
+                {
+                    phaseNum: 9,
+                    title: t('g2_p9_title'),
+                    desc: t('g2_p9_desc'),
+                    location: t('g2_p9_loc'),
+                    media: [
+                        "https://i.imgur.com/irhONdA.jpeg",
+                        "https://i.imgur.com/TSB9c6K.jpeg",
+                        "https://i.imgur.com/FJhJwf2.jpeg",
+                        "https://i.imgur.com/vL1IQyS.jpeg",
+                        "https://i.imgur.com/brVsB44.jpeg",
+                        "https://i.imgur.com/GtlkMc2.jpeg",
+                        "https://i.imgur.com/5wDhNV1.jpeg",
+                        "https://i.imgur.com/KrjjVMt.jpeg"
+                    ]
+                },
+                {
+                    phaseNum: 8,
+                    title: t('g2_p8_title'),
+                    desc: t('g2_p8_desc'),
+                    location: t('g2_p8_loc'),
+                    media: [
+                        "https://i.imgur.com/JGPU5FZ.jpeg",
+                        "https://i.imgur.com/TEZGKtU.jpeg",
+                        "https://i.imgur.com/vtfFNdu.jpeg",
+                        "https://i.imgur.com/Lw37j0q.jpeg",
+                        "https://i.imgur.com/XJ5rHzO.jpeg"
+                    ]
+                },
                 { phaseNum: 7, title: t('g2_p7_title'), desc: t('g2_p7_desc'), location: t('g2_p7_loc'), media: ["https://i.imgur.com/EFxTdXC.jpeg", "https://i.imgur.com/7o7paMA.jpeg", "https://i.imgur.com/F2xcikf.jpeg", "https://i.imgur.com/Jty3Lpa.jpeg", "https://i.imgur.com/X11tmKR.jpeg", "https://i.imgur.com/pTOsaDX.jpeg", "https://i.imgur.com/8y2W6xZ.jpeg", "https://i.imgur.com/NJloOol.jpeg", "https://i.imgur.com/W2sj9jM.jpeg"] },
                 { phaseNum: 6, title: t('g2_p6_title'), desc: t('g2_p6_desc'), location: t('g2_p6_loc'), media: ["https://i.imgur.com/dOnicpr.jpeg", "https://i.imgur.com/vvxcgF2.jpeg", "https://i.imgur.com/3StocjA.jpeg", "https://i.imgur.com/wAcKvXQ.jpeg", "https://i.imgur.com/8YoFRbu.jpeg", "https://i.imgur.com/xriMc5A.jpeg", "https://i.imgur.com/4BeRuOX.jpeg", "https://i.imgur.com/8sbJgNy.jpeg", "https://i.imgur.com/heqp6rc.jpeg"] },
                 { phaseNum: 5, title: t('g2_p5_title'), desc: t('g2_p5_desc'), location: t('g2_p5_loc'), media: ["https://i.imgur.com/7DV7KqS.jpeg", "https://i.imgur.com/gFNg8uS.jpeg", "https://i.imgur.com/vR0osa9.jpeg", "https://i.imgur.com/LmgjC7L.jpeg", "https://i.imgur.com/HY14XDa.jpeg", "https://i.imgur.com/gfTshdJ.jpeg", "https://i.imgur.com/YUTkOTr.jpeg"] },
@@ -208,7 +312,21 @@ export default function Impacto() {
         {
             year: t('g3_year'),
             phases: [
-                { phaseNum: 4, title: t('g3_p4_title'), desc: t('g3_p4_desc'), location: t('g3_p4_loc'), media: ["https://i.imgur.com/JgU5KXO.jpeg", "https://via.placeholder.com/800x600/113255/FFFFFF?text=Torneio+Dez+2"] },
+                {
+                    phaseNum: 4,
+                    title: t('g3_p4_title'),
+                    desc: t('g3_p4_desc'),
+                    location: t('g3_p4_loc'),
+                    media: [
+                        "https://i.imgur.com/3xgxoS9.jpeg",
+                        "https://i.imgur.com/xEePYMi.jpeg",
+                        "https://i.imgur.com/FfFsSee.jpeg",
+                        "https://i.imgur.com/ceQNBf8.jpeg",
+                        "https://i.imgur.com/zpVZmGv.jpeg",
+                        "https://i.imgur.com/bDl7Dxz.jpeg",
+                        "https://i.imgur.com/bOHMJUD.jpeg"
+                    ]
+                },
                 { phaseNum: 3, title: t('g3_p3_title'), desc: t('g3_p3_desc'), location: t('g3_p3_loc'), media: ["https://i.imgur.com/gWN9XQP.jpeg", "https://i.imgur.com/SDPRWdn.jpeg", "https://i.imgur.com/mZ9M9JT.jpeg", "https://i.imgur.com/N9z9hey.jpeg", "https://i.imgur.com/55o2RLG.jpeg", "https://i.imgur.com/ELdTtrV.jpeg", "https://i.imgur.com/tyM8yLT.jpeg", "https://i.imgur.com/9d9Hdyf.jpeg"] },
             ],
         },
@@ -235,8 +353,7 @@ export default function Impacto() {
                 <Navbar />
 
                 {/* ── CINEMATIC SCROLL HERO SECTION ── */}
-                {/* 
-                  O contêiner aumenta o espaço de scroll com h-[300vh].
+                {/* O contêiner aumenta o espaço de scroll com h-[300vh].
                   O bloco fixo "sticky" vai ficar na tela através da altura 'h-screen'
                   enquanto percorrermos os 300vh do parent.
                 */}
